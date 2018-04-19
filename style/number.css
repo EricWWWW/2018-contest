@@ -1,0 +1,81 @@
+.number-0{
+    font-size: 0;
+}
+.number-2{
+    background: #eee4de;
+}
+.number-2::after{
+    content:'2'
+}
+.number-4{
+    background: #ede0c8;;
+}
+.number-4::after{
+    content:'4'
+}
+.number-8{
+    color: #f9f6f2;
+    background: #f2b179;
+}
+.number-8::after{
+    content:'8'
+}
+.number-16{
+    color: #f9f6f2;
+    background: #f59563;
+}
+.number-16::after{
+    content:'16'
+}
+.number-32{
+    color: #f9f6f2;
+    background: #f67c5f;
+}
+.number-32::after{
+    content:'32'
+}
+.number-64{
+    color: #f9f6f2;
+    background: #f65e3b;
+}
+.number-64::after{
+    content:'64'
+}
+.number-128{
+    color: #f9f6f2;
+    background: #edcf72;
+}
+.number-128::after{
+    content:'128'
+}
+.number-256{
+    color: #f9f6f2;
+    background: #edcc61;
+}
+.number-256::after{
+    content:'256'
+}
+
+.number-512{
+    color: #f9f6f2;
+    background: #edc850;
+}
+.number-512::after{
+    content:'512'
+}
+.number-1024{
+    color: #f9f6f2;
+    background: #edc53f;
+}
+.number-1024::after{
+    content:'1024';
+    font-size: 40px;
+}
+.number-2048{
+    color: #f9f6f2;
+    background: #edc22e;
+}
+.number-2048::after{
+    content:'2048';
+    font-size: 40px;
+}

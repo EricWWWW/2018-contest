@@ -1,0 +1,13 @@
+@keyframes show {
+    0% {
+        opacity: 0;
+        transform:scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform:scale(1);
+    }
+}
+.show{
+    animation: show 200ms ease 100ms backwards;
+}

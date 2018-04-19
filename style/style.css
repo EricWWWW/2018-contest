@@ -1,0 +1,134 @@
+body{
+    margin:0;
+    padding:20px;
+    background:#faf8ef ;
+    color: #776e65;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+}
+#wrapper{
+    width:500px;
+    margin:0 auto;
+}
+
+/*
+    header 部分
+*/
+
+header{
+    overflow: auto;
+}
+header h1{
+    font-size: 80px;
+    font-weight:bold;
+    float:left;
+    margin: 0;
+}
+header .score-container{
+    float:right
+}
+.score-container .score::before{
+    content:'分数';
+}
+.score-container .best::before{
+    content:'最高得分';
+}
+.score-container .score::before,.score-container .best::before{
+    position: absolute;
+    width: 100%;
+    top: 10px;
+    left: 0;
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 13px;
+    text-align: center;
+    color: #eee4da;
+}
+.score-container .score,.score-container .best{
+    position: relative;
+    display: inline-block;
+    background: #bbada0;
+    padding: 15px 25px;
+    font-size: 25px;
+    height: 25px;
+    line-height: 47px;
+    font-weight: bold;
+    border-radius: 3px;
+    color: white;
+    margin-top: 8px;
+    text-align: center;
+}
+
+/*
+    nav 部分
+*/
+
+nav{
+    overflow: auto;
+}
+nav p{
+    float: left;
+    line-height: 42px;
+    margin: 0;
+}
+nav .restart{
+    float:right;
+    background: #8f7a66;
+    border-radius: 3px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #f9f6f2;
+    height: 40px;
+    line-height: 42px;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+}
+
+/*
+    main 部分
+*/
+.grid-container{
+    box-sizing: border-box;
+    margin-top: 40px;
+    width:500px;
+    height:500px;
+    background: #bbada0;
+    border-radius: 6px;
+    padding:15px;
+    position: relative;
+}
+.grid-row{
+    margin-bottom: 15px;
+    overflow: auto;
+}
+.grid-row:last-child{
+    margin-bottom: 0;
+}
+.grid-cell{
+    width: 106.25px;
+    height: 106.25px;
+    margin-right: 15px;
+    float: left;
+    border-radius: 3px;
+    background: rgba(238, 228, 218, 0.35);
+}
+.grid-cell:last-child{
+    margin-right: 0;
+}
+
+.number-container{
+    position:absolute;
+    left: 15px;
+    top:15px;
+}
+.number-cell{
+    width: 106.25px;
+    height: 106.25px;
+    line-height:106.25px;
+    border-radius: 3px;
+    text-align: center;
+    font-weight: bold;
+    font-size:55px;
+    position: absolute;
+}
