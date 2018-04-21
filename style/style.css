@@ -71,7 +71,7 @@ nav p{
     line-height: 42px;
     margin: 0;
 }
-nav .restart{
+.restart{
     float:right;
     background: #8f7a66;
     border-radius: 3px;
@@ -131,4 +131,20 @@ nav .restart{
     font-weight: bold;
     font-size:55px;
     position: absolute;
+}
+
+.gameover{
+    display: none;
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height: 100%;
+    background:rgba(238, 228, 218, 0.73);
+    text-align: center;
+}
+.gameover p{
+    font-size: 60px;
+    font-weight: bold;
+    margin-top:20%;
 }

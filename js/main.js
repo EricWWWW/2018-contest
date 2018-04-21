@@ -5,7 +5,54 @@ document.addEventListener('DOMContentLoaded',function(){
     newGame();
 })
 
+// 监听方向键
+document.addEventListener('keydown',function(e){
+    switch(e.keyCode){
+        case 37: // left
+            if(toLeft(data)){
+                generateNewNumber(data);
+                if(isGameOver(data)){
+                    gameOver();
+                };
+            };
+            break;
+        case 38: // up
+            if(toUp(data)){
+                generateNewNumber(data);
+                if(isGameOver(data)){
+                    gameOver();
+                };
+            };
+            break;
+        case 39: // right
+            if(toRight(data)){
+                generateNewNumber(data);
+                if(isGameOver(data)){
+                    gameOver();
+                };
+            };
+            break;
+        case 40: // down
+            if(toDown(data)){
+                generateNewNumber(data);
+                if(isGameOver(data)){
+                    gameOver();
+                };
+            };
+            break;
+
+        default:break;
+    }
+})
+
+
 function newGame(){
+
+    // gameover 隐藏
+    let over = document.querySelector('.gameover');
+    over.style.display = 'none';
+    over.querySelector('span').innerHTML = '';
+
     // 初始化
     init();
 
