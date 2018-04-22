@@ -4,7 +4,7 @@
 
 - 适配移动端，可微信扫一扫访问
 
-![](ericwwww.me/2048/img/qrcode.png)
+![](http://ericwwww.me/2048/img/qrcode.png)
 
 - demo放在了自己的网站上:[点击查看](ericwwww.me)
 
