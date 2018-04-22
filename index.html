@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="style/style.css">
 	<link rel="stylesheet" href="style/number.css">
 	<link rel="stylesheet" href="style/animation.css">
+
 	<title>2048</title>
 </head>
 <body>
@@ -18,6 +19,7 @@
 		<div class="score-container">
 			<div class="score">
 				0
+				<div class="score-add"></div>
 			</div>
 			<div class="best">
 				0
@@ -25,7 +27,8 @@
 		</div>
 	</header>
 	<nav>
-		<p><strong>方向键</strong>操作滑块，实现2048！</p>
+		<p>pc端：<strong>方向键</strong>操作滑块，实现2048！</p>
+		<p>移动端：<strong>触摸</strong>操控，实现2048！</p>
 		<a class="restart">开始新游戏</a>
 	</nav>
 	<main>
@@ -57,10 +60,11 @@
 			<div class="number-container">
 				<div class="number-cell"></div>
 			</div>
-			<div class="gameover">
-				<p>游戏结束！！</p>
+			<div class="result">
+				<p class="msg"></p>
 				<p>得分：<span></span></p>
 			</div>
+
 		</div>
 	</main>
 	<footer></footer>

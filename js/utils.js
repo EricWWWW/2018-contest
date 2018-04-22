@@ -17,9 +17,24 @@ function generateNewNumber(data){
         let x = parseInt(Math.random()*4);
         let y = parseInt(Math.random()*4);
 
-        while(data[x][y] != 0){
+        let times = 0;
+        while(times < 50){
+            if(data[x][y] == 0) break;
             x = parseInt(Math.random()*4);
             y = parseInt(Math.random()*4);
+            times ++;
+        }
+
+        if(times == 50){   // 超过五十次，直接遍历寻找为 0 的块，节省时间
+            for(let i = 0;i < 4;i++){
+                for(let j = 0;j < 4;j++){
+                    if(data[i][j] == 0){
+                        x = i;
+                        y = j;
+                        break;
+                    }
+                }
+            }
         }
 
         data[x][y] = Math.random() < 0.8 ? 2 : 4;
@@ -69,11 +84,15 @@ function toLeft(data){
                             data[i][j] = 0;
                             break;
                         }
-                        else if( data[i][k] == data[i][j] && noBlockBetween(i,i,k,j,data) ){ // 两个数相等
+                        else if( data[i][k] == data[i][j] && noBlockBetween(i,i,k,j,data) && !conflict[i][k] ){ // 两个数相等
                             // 移动且叠加
                             moveTo(i,j,i,k);
                             data[i][k] *= 2;
                             data[i][j] = 0;
+
+                            updateScore(data[i][k]);
+                            conflict[i][k] = true;
+
                             break;
                         }
                     }
@@ -108,18 +127,22 @@ function toRight(data){
             for(let j = 2;j >= 0;j--){
                 if( data[i][j] != 0){
                     for(let k = 3;k > j;k--){
-                        if( data[i][k] == 0 && noBlockBetween(i,i,k,j,data)){ // 当前块为空且在他们之间也没有其他快
+                        if( data[i][k] == 0 && noBlockBetween(i,i,j,k,data)){ // 当前块为空且在他们之间也没有其他快
                             // 移动
                             moveTo(i,j,i,k);
                             data[i][k] = data[i][j];
                             data[i][j] = 0;
                             break;
                         }
-                        else if( data[i][k] == data[i][j] && noBlockBetween(i,i,k,j,data) ){ // 两个数相等
+                        else if( data[i][k] == data[i][j] && noBlockBetween(i,i,j,k,data) && !conflict[i][k] ){ // 两个数相等
                             // 移动且叠加
                             moveTo(i,j,i,k);
                             data[i][k] *= 2;
                             data[i][j] = 0;
+
+                            updateScore(data[i][k]);
+                            conflict[i][k] = true;
+
                             break;
                         }
                     }
@@ -154,18 +177,22 @@ function toUp(data){
             for(let j = 0;j < 4;j++){
                 if( data[i][j] != 0){
                     for(let k = 0;k < i;k++){
-                        if( data[k][j] == 0 && noBlockBetween(i,k,j,j,data)){ // 当前块为空且在他们之间也没有其他快
+                        if( data[k][j] == 0 && noBlockBetween(k,i,j,j,data)){ // 当前块为空且在他们之间也没有其他快
                             // 移动
                             moveTo(i,j,k,j);
                             data[k][j] = data[i][j];
                             data[i][j] = 0;
                             break;
                         }
-                        else if( data[k][j] == data[i][j] && noBlockBetween(i,k,j,j,data) ){ // 两个数相等
+                        else if( data[k][j] == data[i][j] && noBlockBetween(k,i,j,j,data) && !conflict[k][j]){ // 两个数相等
                             // 移动且叠加
                             moveTo(i,j,k,j);
                             data[k][j] *= 2;
                             data[i][j] = 0;
+
+                            updateScore(data[k][j]);
+                            conflict[k][j] = true;
+
                             break;
                         }
                     }
@@ -207,11 +234,15 @@ function toDown(data){
                             data[i][j] = 0;
                             break;
                         }
-                        else if( data[k][j] == data[i][j] && noBlockBetween(i,k,j,j,data) ){ // 两个数相等
+                        else if( data[k][j] == data[i][j] && noBlockBetween(i,k,j,j,data) && !conflict[k][j]){ // 两个数相等
                             // 移动且叠加
                             moveTo(i,j,k,j);
                             data[k][j] *= 2;
                             data[i][j] = 0;
+
+                            updateScore(data[k][j]);
+                            conflict[k][j] = true;
+
                             break;
                         }
                     }
@@ -308,8 +339,16 @@ function isGameOver(data){
     }
 
 }
-function gameOver(){
-    let over = document.querySelector('.gameover');
-    over.style.display = 'block';
-    over.querySelector('span').innerHTML = 123
+
+function result(msg){
+    let res = document.querySelector('.result');
+    res.style.display = 'block';
+    res.querySelector('.msg').innerHTML = msg;
+    res.querySelector('span').innerHTML = score;
 }
+
+// 获取生成块的边长
+function getWidth(){
+    return window.innerWidth <= para.min ? (para.mobileMargin + para.mobileWidth) : (para.normalMargin + para.normalWidth)
+}
+

@@ -69,7 +69,6 @@
 }
 .number-1024::after{
     content:'1024';
-    font-size: 40px;
 }
 .number-2048{
     color: #f9f6f2;
@@ -77,5 +76,4 @@
 }
 .number-2048::after{
     content:'2048';
-    font-size: 40px;
 }

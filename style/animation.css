@@ -11,3 +11,17 @@
 .show{
     animation: show 200ms ease 100ms backwards;
 }
+
+@keyframes move-top{
+    0% {
+        opacity: 1;
+    }
+    100% {
+        top: -50px;
+        opacity: 0;
+    }
+}
+
+.move-top{
+    animation: move-top 600ms ease-in;
+}
