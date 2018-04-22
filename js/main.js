@@ -25,18 +25,20 @@ document.addEventListener('DOMContentLoaded',function(){
 
 // 监听触摸事件
 document.addEventListener('touchstart',function(e){
+    e.preventDefault();
     startX = e.touches[0].pageX;
     startY = e.touches[0].pageY;
 })
 
 document.addEventListener('touchend',function(e){
+    e.preventDefault();
     endX = e.changedTouches[0].pageX;
     endY = e.changedTouches[0].pageY;
 
     let deltaX = endX - startX;
     let deltaY = endY - startY;
     // 小于一定范围不触发
-    if(Math.abs(deltaX) < 0.2*window.innerWidth && Math.abs(deltaY) < 0.2*window.innerHeight){
+    if(Math.abs(deltaX) < 0.1*window.innerWidth && Math.abs(deltaY) < 0.1*window.innerHeight){
         return
     }
     // x 轴方向移动
@@ -168,7 +170,8 @@ function init() {
     score = 0;
 
     document.querySelector('.score').firstChild.textContent = score;
-    document.querySelector('.best').innerHTML = localStorage.best ? localStorage.best : 0;
+    localStorage.best = localStorage.best ? localStorage.best : 0;
+    document.querySelector('.best').innerHTML = localStorage.best;
 
     updateView();
 }
